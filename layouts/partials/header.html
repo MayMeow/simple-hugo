@@ -1,0 +1,27 @@
+<header>
+    <nav>
+        {{ if len .Site.Menus }}
+        {{ $currentPage := . }}
+            {{ range .Site.Menus.main -}}
+                {{ if eq . $currentPage }}
+                    <a class="current" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                {{ else }}
+                    <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                {{ end }}
+            {{- end }}
+        {{ end }}
+    </nav>
+
+    {{ if .IsHome }}
+        <h1>{{ .Site.Title }}</h1>
+        {{- with .Site.Params.Description -}}
+            <p>{{ . }}</p>
+        {{ end }}
+    {{ else }}
+        <h1>{{ .Title }}</h1>
+        {{- with .Description -}}
+            <p>{{ . }}</p>
+        {{ end }}
+    {{ end }}
+    
+</header>

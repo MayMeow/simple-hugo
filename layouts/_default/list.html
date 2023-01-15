@@ -1,0 +1,13 @@
+{{ define "main" }}
+    {{ range .Data.Pages }}
+    <article>
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        {{- with .Params.tags -}}
+        {{ range . }}
+                <a href="/tags/{{ . | urlize }}"><mark>{{ . }}</mark></a>
+            {{ end }}
+        {{ end }}
+        <p>{{ .Date | time.Format ":date_long" }}</p>
+    </article>
+    {{ end }}
+{{ end }}

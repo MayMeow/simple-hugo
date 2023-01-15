@@ -1,0 +1,7 @@
+{{ $simplecss := resources.Get "css/simple.min.css" | resources.Fingerprint }}
+{{ $style := resources.Get "css/style.css" | resources.Fingerprint }}
+
+<head>
+    <link rel="stylesheet" href="{{ $simplecss.RelPermalink }}">
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+</head>

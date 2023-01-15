@@ -1,0 +1,12 @@
+{{ define "main" }}
+    <p>Posted on: {{ .Date }}</p>
+
+    {{ .Content }}
+
+    {{- with .Params.tags -}}
+        {{ range . }}
+            <a href="/tags/{{ . | urlize }}"><mark>{{ . }}</mark></a>
+        {{ end }}
+    {{ end }}
+
+{{ end }}
